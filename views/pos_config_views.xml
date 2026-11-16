@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Individual POS Config Form View -->
+    <record id="pos_config_view_form_inherit_feedback_bypass" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit.feedback.bypass</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='title']" position="after">
+                <div class="row mt16 o_settings_container">
+                    <!-- Bypass & Buttons Settings -->
+                    <setting string="Feedback Screen Bypass &amp; Buttons"
+                             help="Configure instant bypass and hide buttons on the POS Feedback Screen">
+                        <field name="iface_feedback_bypass_loading"/>
+                        <div class="content-group mt16">
+                            <div class="row" invisible="not iface_feedback_bypass_loading">
+                                <label for="iface_feedback_suppress_warning" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_suppress_warning"/>
+                            </div>
+                            <div class="row mt8">
+                                <label for="iface_feedback_hide_buttons" class="col-lg-7 o_light_label fw-bold"/>
+                                <field name="iface_feedback_hide_buttons"/>
+                            </div>
+                            <div class="row" invisible="iface_feedback_hide_buttons">
+                                <label for="iface_feedback_hide_print_btn" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_hide_print_btn"/>
+                            </div>
+                            <div class="row" invisible="iface_feedback_hide_buttons">
+                                <label for="iface_feedback_hide_edit_payment_btn" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_hide_edit_payment_btn"/>
+                            </div>
+                        </div>
+                    </setting>
+
+                    <!-- Financial Details Settings -->
+                    <setting string="Feedback Screen Order Details"
+                             help="Show Total, Cash Paid, and Change on the POS Feedback Screen">
+                        <field name="iface_feedback_show_details"/>
+                        <div class="content-group mt16" invisible="not iface_feedback_show_details">
+                            <div class="row">
+                                <label for="iface_feedback_show_total" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_show_total"/>
+                            </div>
+                            <div class="row">
+                                <label for="iface_feedback_show_cash" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_show_cash"/>
+                            </div>
+                            <div class="row">
+                                <label for="iface_feedback_show_change" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_show_change"/>
+                            </div>
+                        </div>
+                    </setting>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Global POS Settings View (Point of Sale -> Configuration -> Settings) -->
+    <record id="res_config_settings_view_form_inherit_feedback_bypass" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.feedback.bypass</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_interface_section']" position="inside">
+                <setting string="Feedback Screen Bypass &amp; Buttons"
+                         help="Configure instant bypass and hide buttons on the POS Feedback Screen">
+                    <field name="pos_iface_feedback_bypass_loading"/>
+                    <div class="content-group mt16">
+                        <div class="row" invisible="not pos_iface_feedback_bypass_loading">
+                            <label for="pos_iface_feedback_suppress_warning" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_suppress_warning"/>
+                        </div>
+                        <div class="row mt8">
+                            <label for="pos_iface_feedback_hide_buttons" class="col-lg-7 o_light_label fw-bold"/>
+                            <field name="pos_iface_feedback_hide_buttons"/>
+                        </div>
+                        <div class="row" invisible="pos_iface_feedback_hide_buttons">
+                            <label for="pos_iface_feedback_hide_print_btn" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_hide_print_btn"/>
+                        </div>
+                        <div class="row" invisible="pos_iface_feedback_hide_buttons">
+                            <label for="pos_iface_feedback_hide_edit_payment_btn" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_hide_edit_payment_btn"/>
+                        </div>
+                    </div>
+                </setting>
+
+                <setting string="Feedback Screen Order Details"
+                         help="Show Total, Cash Paid, and Change on the POS Feedback Screen">
+                    <field name="pos_iface_feedback_show_details"/>
+                    <div class="content-group mt16" invisible="not pos_iface_feedback_show_details">
+                        <div class="row">
+                            <label for="pos_iface_feedback_show_total" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_show_total"/>
+                        </div>
+                        <div class="row">
+                            <label for="pos_iface_feedback_show_cash" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_show_cash"/>
+                        </div>
+                        <div class="row">
+                            <label for="pos_iface_feedback_show_change" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_show_change"/>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

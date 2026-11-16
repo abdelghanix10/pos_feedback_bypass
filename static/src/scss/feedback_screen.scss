@@ -1,0 +1,41 @@
+.feedback-screen {
+    /* Summary Card Styling */
+    .o_feedback_details_card {
+        width: 100%;
+        max-width: 440px;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.96);
+    }
+
+    /* Hide ALL buttons on FeedbackScreen when checkbox is enabled */
+    &:has(.o_feedback_custom_wrapper[data-hide-all-buttons="1"]) {
+        button,
+        .btn,
+        .button,
+        .buttons {
+            display: none !important;
+        }
+    }
+
+    /* Selectively hide Print button */
+    &:has(.o_feedback_custom_wrapper[data-hide-print-btn="1"]) {
+        button:has(.fa-print),
+        button:has([data-icon="print"]),
+        .btn:has(.fa-print),
+        .btn:has([data-icon="print"]),
+        .print-button {
+            display: none !important;
+        }
+    }
+
+    /* Selectively hide Edit Payment / Back button */
+    &:has(.o_feedback_custom_wrapper[data-hide-edit-btn="1"]) {
+        button:has(.fa-pencil),
+        button:has([data-icon="edit"]),
+        .btn:has(.fa-pencil),
+        .btn:has([data-icon="edit"]),
+        .edit-order-payment {
+            display: none !important;
+        }
+    }
+}

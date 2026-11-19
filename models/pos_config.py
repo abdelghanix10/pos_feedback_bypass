@@ -27,10 +27,15 @@ class PosConfig(models.Model):
         default=False,
         help="Hide the Print Receipt button on the Feedback Screen.",
     )
-    iface_feedback_hide_edit_payment_btn = fields.Boolean(
-        string="Hide Edit Payment Button",
+    iface_feedback_hide_send_btn = fields.Boolean(
+        string="Hide Send Receipt Button",
         default=False,
-        help="Hide the Edit Payment button on the Feedback Screen.",
+        help="Hide the Send Receipt button on the Feedback Screen.",
+    )
+    iface_feedback_hide_edit_payment_btn = fields.Boolean(
+        string="Hide Edit Payment / Back Button",
+        default=False,
+        help="Hide the Edit Payment / Back button on the Feedback Screen.",
     )
 
     # Financial Details settings (Total, Cash, Change)

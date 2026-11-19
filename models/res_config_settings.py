@@ -20,6 +20,10 @@ class ResConfigSettings(models.TransientModel):
         related='pos_config_id.iface_feedback_hide_print_btn',
         readonly=False,
     )
+    pos_iface_feedback_hide_send_btn = fields.Boolean(
+        related='pos_config_id.iface_feedback_hide_send_btn',
+        readonly=False,
+    )
     pos_iface_feedback_hide_edit_payment_btn = fields.Boolean(
         related='pos_config_id.iface_feedback_hide_edit_payment_btn',
         readonly=False,

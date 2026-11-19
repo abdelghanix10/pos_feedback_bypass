@@ -11,7 +11,8 @@ This Odoo 20 module enhances the Point of Sale **Feedback Screen** by allowing c
 2. **Hide Feedback Screen Buttons**:
    - **Hide All Buttons**: Removes all buttons from the Feedback Screen for a clean touchscreen experience.
    - **Hide Print Receipt Button**: Selectively hides the Print button.
-   - **Hide Edit Payment Button**: Selectively hides the Edit Payment button.
+   - **Hide Send Receipt Button**: Selectively hides the Send Receipt button.
+   - **Hide Edit Payment / Back Button**: Selectively hides the Edit Payment / Back button.
 3. **Order Financial Summary (Total, Cash, Change)**:
    - Displays a high-contrast card showing **Total**, **Cash / Payment Methods Tendered**, and **Change Due**.
    - Each line (**Total**, **Cash**, **Change**) can be toggled individually in POS Settings.

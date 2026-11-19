@@ -1,40 +1,106 @@
 .feedback-screen {
-    /* Summary Card Styling */
+    height: 100dvh !important;
+    max-height: 100dvh;
+    overflow-y: auto;
+    justify-content: safe center !important;
+    padding: 1rem;
+    gap: 1rem;
+
+    /* Compact the hero FeedbackPaymentSummary so everything fits inside 100vh */
+    &[data-has-details="1"] {
+        > :first-child {
+            flex: 0 0 auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            zoom: 0.65;
+        }
+
+        .desktop-format {
+            flex: 0 0 auto;
+            padding: 0 !important;
+            margin-top: 0.25rem;
+        }
+    }
+
+    /* Compact wrapper spacing */
+    .o_feedback_details_wrapper {
+        flex: 0 0 auto;
+        margin: 0 !important;
+    }
+
+    /* Sleek Horizontal Summary Card */
     .o_feedback_details_card {
         width: 100%;
-        max-width: 440px;
-        border-radius: 12px;
-        background-color: rgba(255, 255, 255, 0.96);
+        max-width: 620px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.09);
+        border-radius: 14px;
+        overflow: hidden;
     }
 
-    /* Hide ALL buttons on FeedbackScreen when checkbox is enabled */
-    &:has(.o_feedback_custom_wrapper[data-hide-all-buttons="1"]) {
-        button,
-        .btn,
-        .button,
-        .buttons {
+    .o_feedback_stat {
+        flex: 1 1 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.1rem;
+        text-align: center;
+        border-right: 1px solid rgba(0, 0, 0, 0.07);
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    .o_feedback_stat_change {
+        background-color: rgba(25, 135, 84, 0.09);
+    }
+
+    .o_feedback_stat_label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #6c757d;
+        margin-bottom: 0.2rem;
+    }
+
+    .o_feedback_stat_value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.2;
+        white-space: nowrap;
+
+        &.text-secondary {
+            color: #495057 !important;
+        }
+    }
+
+    &[data-hide-all-buttons="1"] {
+        .desktop-format,
+        .mobile-format {
             display: none !important;
         }
     }
 
-    /* Selectively hide Print button */
-    &:has(.o_feedback_custom_wrapper[data-hide-print-btn="1"]) {
-        button:has(.fa-print),
-        button:has([data-icon="print"]),
-        .btn:has(.fa-print),
-        .btn:has([data-icon="print"]),
-        .print-button {
+    &[data-hide-print-btn="1"] {
+        .print-ticket-button {
             display: none !important;
         }
     }
 
-    /* Selectively hide Edit Payment / Back button */
-    &:has(.o_feedback_custom_wrapper[data-hide-edit-btn="1"]) {
-        button:has(.fa-pencil),
-        button:has([data-icon="edit"]),
-        .btn:has(.fa-pencil),
-        .btn:has([data-icon="edit"]),
-        .edit-order-payment {
+    &[data-hide-send-btn="1"] {
+        .send-receipt {
+            display: none !important;
+        }
+    }
+
+    &[data-hide-edit-btn="1"] {
+        .edit-order-payment,
+        .back-button {
             display: none !important;
         }
     }

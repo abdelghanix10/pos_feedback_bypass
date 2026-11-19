@@ -26,6 +26,10 @@
                                 <field name="iface_feedback_hide_print_btn"/>
                             </div>
                             <div class="row" invisible="iface_feedback_hide_buttons">
+                                <label for="iface_feedback_hide_send_btn" class="col-lg-7 o_light_label"/>
+                                <field name="iface_feedback_hide_send_btn"/>
+                            </div>
+                            <div class="row" invisible="iface_feedback_hide_buttons">
                                 <label for="iface_feedback_hide_edit_payment_btn" class="col-lg-7 o_light_label"/>
                                 <field name="iface_feedback_hide_edit_payment_btn"/>
                             </div>
@@ -78,6 +82,10 @@
                         <div class="row" invisible="pos_iface_feedback_hide_buttons">
                             <label for="pos_iface_feedback_hide_print_btn" class="col-lg-7 o_light_label"/>
                             <field name="pos_iface_feedback_hide_print_btn"/>
+                        </div>
+                        <div class="row" invisible="pos_iface_feedback_hide_buttons">
+                            <label for="pos_iface_feedback_hide_send_btn" class="col-lg-7 o_light_label"/>
+                            <field name="pos_iface_feedback_hide_send_btn"/>
                         </div>
                         <div class="row" invisible="pos_iface_feedback_hide_buttons">
                             <label for="pos_iface_feedback_hide_edit_payment_btn" class="col-lg-7 o_light_label"/>

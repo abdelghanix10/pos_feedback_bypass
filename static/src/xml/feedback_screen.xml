@@ -3,50 +3,49 @@
     <t t-name="pos_feedback_bypass.FeedbackScreen"
        t-inherit="point_of_sale.FeedbackScreen"
        t-inherit-mode="extension">
-        <!-- Insert Details Card & Button-Hiding Controller inside the root FeedbackScreen div -->
-        <xpath expr="//div[1]" position="inside">
-            <div class="o_feedback_custom_wrapper w-100 d-flex justify-content-center px-3 my-3"
-                 t-att-data-hide-all-buttons="this.hideAllButtonsAttr"
-                 t-att-data-hide-print-btn="this.hidePrintBtnAttr"
-                 t-att-data-hide-edit-btn="this.hideEditBtnAttr">
+        <xpath expr="//div[hasclass('feedback-screen')]" position="attributes">
+            <attribute name="t-att-data-hide-all-buttons">this.hideAllButtonsAttr</attribute>
+            <attribute name="t-att-data-hide-print-btn">this.hidePrintBtnAttr</attribute>
+            <attribute name="t-att-data-hide-send-btn">this.hideSendBtnAttr</attribute>
+            <attribute name="t-att-data-hide-edit-btn">this.hideEditBtnAttr</attribute>
+            <attribute name="t-att-data-has-details">this.hasDetailsCardAttr</attribute>
+        </xpath>
 
-                <t t-if="this.fbConfig.iface_feedback_show_details">
-                    <t t-set="details" t-value="this.feedbackOrderDetails"/>
-                    <div class="o_feedback_details_card card shadow-sm border-0 p-3">
-                        <!-- Order Total -->
-                        <div t-if="this.fbConfig.iface_feedback_show_total"
-                             class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                            <span class="text-muted fw-semibold fs-5">Total</span>
-                            <span class="fw-bold fs-4 text-dark" t-out="details.total"/>
-                        </div>
+        <xpath expr="//FeedbackPaymentSummary" position="after">
+            <div t-if="this.fbConfig.iface_feedback_show_details"
+                 class="o_feedback_details_wrapper w-100 d-flex justify-content-center px-3 my-3">
+                <t t-set="details" t-value="this.feedbackOrderDetails"/>
+                <div class="o_feedback_details_card d-flex flex-wrap align-items-stretch justify-content-center shadow-sm">
+                    <div t-if="this.fbConfig.iface_feedback_show_total"
+                         class="o_feedback_stat">
+                        <span class="o_feedback_stat_label">Total</span>
+                        <span class="o_feedback_stat_value text-dark" t-out="details.total"/>
+                    </div>
 
-                        <!-- Cash / Paid Breakdown -->
-                        <t t-if="this.fbConfig.iface_feedback_show_cash">
-                            <t t-if="details.paymentLines.length > 0">
-                                <t t-foreach="details.paymentLines" t-as="pm" t-key="pm.id">
-                                    <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                                        <span class="text-muted fw-semibold fs-5" t-out="pm.name"/>
-                                        <span class="fw-bold fs-4 text-primary" t-out="pm.formattedAmount"/>
-                                    </div>
-                                </t>
-                            </t>
-                            <t t-else="">
-                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                                    <span class="text-muted fw-semibold fs-5">Cash / Paid</span>
-                                    <span class="fw-bold fs-4 text-primary" t-out="details.cashPaid"/>
+                    <t t-if="this.fbConfig.iface_feedback_show_cash">
+                        <t t-if="details.paymentLines.length > 0">
+                            <t t-foreach="details.paymentLines" t-as="pm" t-key="pm.id">
+                                <div class="o_feedback_stat">
+                                    <span class="o_feedback_stat_label" t-out="pm.name"/>
+                                    <span class="o_feedback_stat_value text-primary" t-out="pm.formattedAmount"/>
                                 </div>
                             </t>
                         </t>
+                        <t t-else="">
+                            <div class="o_feedback_stat">
+                                <span class="o_feedback_stat_label">Cash / Paid</span>
+                                <span class="o_feedback_stat_value text-primary" t-out="details.cashPaid"/>
+                            </div>
+                        </t>
+                    </t>
 
-                        <!-- Change Due -->
-                        <div t-if="this.fbConfig.iface_feedback_show_change"
-                             class="d-flex justify-content-between align-items-center pt-2 mt-1">
-                            <span class="fw-bold fs-4 text-uppercase">Change</span>
-                            <span t-att-class="'fw-bolder fs-3 ' + (details.hasChange ? 'text-success' : 'text-secondary')"
-                                  t-out="details.change"/>
-                        </div>
+                    <div t-if="this.fbConfig.iface_feedback_show_change"
+                         t-att-class="'o_feedback_stat ' + (details.hasChange ? 'o_feedback_stat_change' : '')">
+                        <span class="o_feedback_stat_label">Change</span>
+                        <span t-att-class="'o_feedback_stat_value ' + (details.hasChange ? 'text-success' : 'text-secondary')"
+                              t-out="details.change"/>
                     </div>
-                </t>
+                </div>
             </div>
         </xpath>
     </t>
